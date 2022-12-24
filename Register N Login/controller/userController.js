@@ -18,7 +18,7 @@ exports.getAllUser = async (req, res) => {
 
 exports.getUser = async (req, res) => {
   try {
-    const user = await User.find(req.params.id);
+    const user = await User.findById(req.params.id);
     res.status(200).json({
       status: "success",
       message: "we got your details from a gaint database!",
