@@ -1,0 +1,18 @@
+include includes/head
+main.main(role='main')
+  .container
+    .about
+      h2 Download Youtube Videos
+      p
+        | Watching videos at youtube can be more costly and it also includes
+        | ads which is more pain. that&apos;s why I have created this tool to
+        | download youtube videos only for once and watch them when you want
+        | without any data cost or ads disturbanse.
+    .form
+      form(action='/download')
+        .input-box
+          input(type='text' placeholder='youtube video url' name='videourl' required='' autocomplete='off')
+        .submit-btn
+          button.btn(type='submit') Download &DownArrow;
+
+include includes/footer

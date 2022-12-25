@@ -1,0 +1,14 @@
+include includes/head
+main.flex.main(role='main')
+	.container
+		.frame-box
+			iframe.frame(src=`${url}` frameborder='1')
+		.dropdown
+			button.drop-btn Download &#x2B9F;
+				.dropdown-content
+					each format in info
+						if (format.hasAudio)
+							a(href=`${format.url}`)= format.qualityLabel	 
+								 
+
+include includes/footer
