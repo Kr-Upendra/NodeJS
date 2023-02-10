@@ -1,0 +1,21 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title= title
+    link(rel='stylesheet', href='/style.css')
+    link(rel="shortcut icon", href="/img/favicon.png", type="image/x-icon")
+  body
+    nav.navbar
+      a(href='/') Lines
+    .container
+      p
+        | It&apos;s a website made by ojha sir fans. Here you will get a chance to
+        | submit great lines spoken by Ojha sir.
+      h4 If you remember anyone please feel free to share it with us
+      form.container__form(action='/api/line', method='post')
+        textarea(required, name='line', rows='4', placeholder='Write line that you remeber' class="linearea")
+        input.input(placeholder='Your full name', type='text', name='username', required)
+        button.btn(type='submit') Submit
