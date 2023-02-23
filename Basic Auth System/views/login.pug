@@ -1,0 +1,31 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Login page | get my secret 
+        link(rel="stylesheet", href="/style.css")
+        link(rel="shortcut icon", href="./img/favicon.ico", type="image/x-icon")
+    body
+        .box 
+            .formbox 
+                h3 Login to get secret 
+                hr 
+                form.form(action="/login", method="post") 
+                    input.input(
+                        type="email",
+                        placeholder="Email or username",
+                        name="username",
+                        required 
+                    )
+                    input.input(
+                        type="password",
+                        placeholder="Passowrd",
+                        name="password",
+                        required 
+                    )
+                    input.btn(type="submit", value="Login") 
+                .not-user
+                    span Not a user? 
+                        a(href="/register") Register
