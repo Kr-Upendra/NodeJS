@@ -1,38 +1,44 @@
 const User = require("../model/userModel");
 
 exports.register = async (req, res) => {
-  console.log(req.body);
   try {
     const user = await User.create({
-      email: req.body.username,
+      username: req.body.username,
       password: req.body.password,
     });
     res.render("secret", {
-      status: "success!",
-      title: "Secret page | Here is my secret",
+      status: "success",
+      title: "You reached | this is my secret",
     });
   } catch (err) {
     res.status(400).json({
-      status: "failed!",
-      message: "something bad happen!",
-      error: err,
+      status: "failed.",
+      message: "Something bad heppen",
     });
   }
 };
 
 exports.login = async (req, res) => {
   try {
-    console.log(req.body);
-    // const user = await User.find();
-    res.status(200).json({
-      status: "success!",
-      data: { user: "hello" },
-    });
+    const username = req.body.username;
+    const password = req.body.password;
+
+    const userDB = await User.findOne({ username: username });
+    if (userDB.password === password) {
+      return res.render("secret", {
+        status: "success",
+        title: "You reached | this is my secret",
+      });
+    } else {
+      res.status(400).json({
+        status: "failed",
+        message: "something bad heppen!",
+      });
+    }
   } catch (err) {
     res.status(400).json({
-      status: "failed!",
-      message: "something bad happen!",
-      error: err,
+      status: "failed.",
+      message: "Something bad heppen",
     });
   }
 };

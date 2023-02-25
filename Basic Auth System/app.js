@@ -20,12 +20,4 @@ app.get("/", (req, res) => {
 
 app.use("/", pageRoute);
 
-app.get("*", (req, res) => {
-  res.status(404).json({
-    status: "failed",
-    message: `The url '${req.originalUrl}' does not exist on this site.`,
-    statusCode: 404,
-  });
-});
-
 module.exports = app;
