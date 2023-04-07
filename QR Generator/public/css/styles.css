@@ -118,12 +118,15 @@ body {
   padding: 1rem;
   background-color: #ffffffa4;
   border-radius: 0.3rem;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 0px 8px;
   margin-bottom: 1.5rem;
 }
 
 .resultimg img {
   border-radius: 0.25rem;
+  width: 230px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .downloadbtn {
@@ -168,7 +171,7 @@ body {
 
 @media (max-width: 600px) {
   .main {
-    height: 110vh;
+    height: 118vh;
   }
   .container {
     height: 50vh;
