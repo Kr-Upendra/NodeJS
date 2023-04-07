@@ -1,0 +1,20 @@
+doctype html
+html(lang='en')
+    include partials/head
+    body
+        main.main
+            .heading
+                h1 Generate and download QR Code for your site
+            .container
+                include partials/input
+                .resultbox
+                    if data 
+                        .resultcontent(data-result='true')
+                            .resultimg
+                                img(src=data, alt='Your QR Code')
+                            a.downloadbtn(href='/download') Download
+                    else 
+                        .resultcontent(data-result='false')
+                            .resultimg
+                                img(src=data, alt='Your QR Code')
+                            a.downloadbtn(href='/download') Download
