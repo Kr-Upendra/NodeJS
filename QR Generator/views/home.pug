@@ -17,4 +17,4 @@ html(lang='en')
                         .resultcontent(data-result='false')
                             .resultimg
                                 img(src=data, alt='Your QR Code')
-                            a.downloadbtn(href='/download') Download
+                            a.downloadbtn(href=`/download?filePath=${data}`) Download

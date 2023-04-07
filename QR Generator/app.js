@@ -18,8 +18,16 @@ app.get("/generate", async (req, res) => {
   const data = req.query.url;
   try {
     const output = await qrcode.toDataURL(data);
+    const filePath = "store/" + Date.now() + ".png";
+    qrcode.toFile(filePath, data, {
+      color: {
+        dark: "#000000",
+        light: "#0000",
+      },
+    });
     res.status(200).render("home", {
       title: "QR Code Generator",
+      filePath: filePath,
       data: output,
     });
   } catch (error) {
@@ -28,6 +36,10 @@ app.get("/generate", async (req, res) => {
       data: "something bad heppen!",
     });
   }
+});
+
+app.get("/download", (req, res) => {
+  res.download(req.query.filePath);
 });
 
 app.all("*", (req, res) => {
