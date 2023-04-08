@@ -8,13 +8,13 @@ html(lang='en')
             .container
                 include partials/input
                 .resultbox
-                    if data 
+                    if QRCode 
                         .resultcontent(data-result='true')
                             .resultimg
-                                img(src=data, alt='Your QR Code')
-                            a.downloadbtn(href='/download') Download
+                                img(src=QRCode, alt='Your QR Code')
+                            a.downloadbtn(href=`/download?filePath=${imgSrc}`) Download
                     else 
                         .resultcontent(data-result='false')
                             .resultimg
-                                img(src=data, alt='Your QR Code')
-                            a.downloadbtn(href=`/download?filePath=${data}`) Download
+                                img(src="", alt='Your QR Code')
+                            a.downloadbtn(href=`/download`) Download
