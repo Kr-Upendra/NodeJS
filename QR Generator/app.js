@@ -8,7 +8,7 @@ app.use(morgan("short"));
 app.set("view engine", "pug");
 app.use(express.static("public"));
 
-app.get("/home", (req, res) => {
+app.get("/", (req, res) => {
   res.status(200).render("home", {
     title: "QR Code Generator",
   });
