@@ -33,15 +33,15 @@ I have try to make a web application named <b>QR Generator</b> using nodejs. In 
 
 ## Images
 
-![Images](</Data/Images/Screenshot%20(65).png>)
-![Images](</Data/Images/Screenshot%20(66).png>)
-![Images](</Data/Images/Screenshot%20(67).png>)
-![Images](</Data/Images/Screenshot%20(68).png>)
-![Images](</Data/Images/Screenshot%20(69).png>)
-![Images](</Data/Images/Screenshot%20(70).png>)
-![Images](</Data/Images/Screenshot%20(71).png>)
-![Images](</Data/Images/Screenshot%20(72).png>)
-![Images](</Data/Images/Screenshot%20(73).png>)
+![Images](<./Data/Images/Screenshot%20(65).png>)
+![Images](<./Data/Images/Screenshot%20(66).png>)
+![Images](<./Data/Images/Screenshot%20(67).png>)
+![Images](<./Data/Images/Screenshot%20(68).png>)
+![Images](<./Data/Images/Screenshot%20(69).png>)
+![Images](<./Data/Images/Screenshot%20(70).png>)
+![Images](<./Data/Images/Screenshot%20(71).png>)
+![Images](<./Data/Images/Screenshot%20(72).png>)
+![Images](<./Data/Images/Screenshot%20(73).png>)
 
 <br>
 <hr>
