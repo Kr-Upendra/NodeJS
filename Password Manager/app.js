@@ -1,13 +1,11 @@
 const express = require("express");
+const passwordRoute = require("./routes/passwordRoute");
+const userRoute = require("./routes/userRoute");
 const app = express();
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.status(200).json({
-    status: "success",
-    message: "checking endpoint!",
-  });
-});
+app.use("/api/v1/passwords/", passwordRoute);
+app.use("/api/v1/users/", userRoute);
 
 module.exports = app;
