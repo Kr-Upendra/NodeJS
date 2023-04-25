@@ -4,7 +4,9 @@ const passwordSchema = new mongoose.Schema({
   username: {
     type: String,
     trim: true,
+    unique: true,
   },
+
   email: {
     type: String,
     trim: true,
