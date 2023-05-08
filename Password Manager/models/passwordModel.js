@@ -11,6 +11,7 @@ const passwordSchema = new mongoose.Schema({
     type: String,
     trim: true,
     required: [true, "A password must have email!"],
+    lowercase: true,
   },
   sitename: {
     type: String,

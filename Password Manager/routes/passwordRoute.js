@@ -1,10 +1,11 @@
 const passwordController = require("../controller/passwordController");
+const authController = require("../controller/authController");
 const express = require("express");
 const router = express.Router();
 
 router
   .route("/")
-  .get(passwordController.getAllPasswords)
+  .get(authController.protect, passwordController.getAllPasswords)
   .post(passwordController.createPassword);
 
 router
