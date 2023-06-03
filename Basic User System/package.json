@@ -1,0 +1,17 @@
+{
+  "name": "basic-user-system",
+  "version": "1.0.0",
+  "description": "A backend for users where it includes Registration login and other many cool features in it.",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Upendra Kumar",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.1.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.2.2",
+    "morgan": "^1.10.0"
+  }
+}
