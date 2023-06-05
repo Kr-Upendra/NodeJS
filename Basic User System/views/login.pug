@@ -1,0 +1,16 @@
+extends base 
+
+block content 
+    main.main(data-isform="true")
+        .main__form
+            .form__name
+                h3 Login Form
+            form.form(action='')
+                input.inputbox(type='email', placeholder='Email', required='', name='email')
+                input.inputbox(type='password', placeholder='Password', required='', name='password')
+                input.inputbox.submitbtn(type='submit', value='Login')
+            .textbtn
+                span Forgot your password?
+                span.linktext
+                    a(href='/signup') Forgot
+            .terms

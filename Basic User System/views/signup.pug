@@ -1,0 +1,24 @@
+extends base
+
+block content 
+    main.main(data-isform="true")
+        .main__form
+            .form__name
+                h3 Signup Form
+            form.form(action='')
+                input.inputbox(type='text', placeholder='Username', required='', name='username')
+                input.inputbox(type='email', placeholder='Email', required='', name='email')
+                input.inputbox(type='password', placeholder='Password', required='', name='password')
+                input.inputbox(type='text', placeholder='Confirm Password', required='', name='confirmPassword')
+                input.inputbox.submitbtn(type='submit', value='Signup')
+            .textbtn
+                span Already a user?
+                span.linktext
+                    a(href='/login') Login
+            .terms
+                span
+                    | By creating account you are accepting our 
+                    b terms
+                    |  and
+                    b conditions
+                    | .

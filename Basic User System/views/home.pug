@@ -1,0 +1,23 @@
+extends base 
+
+block content 
+    main.main
+        .main__left(data-isnight='false')
+            .main__left--content
+                h1.main__left--content-heading Basic User System
+                p.main__left--content-about
+                    | A Nodejs Practice project to implement a basic User System.
+                a.btn.normal__btn(href='/knowMore') Know More
+        .main__right
+            .main__right--content
+                .main__right--content-heading
+                    h3.right__heading Features
+                .container
+                    .card
+                        .card__heading
+                            h4 Fast &amp; Secure
+                        .card__details
+                            p
+                                | It is fast and secure. User can feel safe while creating
+                                | account here. It does not ask any extra information that could
+                                | let you harm in future.
