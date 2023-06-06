@@ -1,6 +1,7 @@
 const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
+const cookieParser = require("cookie-parser");
 require("pug");
 
 const userRoute = require("./routes/userRoute");
@@ -16,6 +17,13 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(cookieParser());
+
+app.use((req, res, next) => {
+  req.requestTime = new Date().toISOString();
+  console.log(req.cookies);
+  next();
+});
 
 app.use("/api/users/", userRoute);
 app.use("/", viewRouter);

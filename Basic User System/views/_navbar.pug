@@ -3,5 +3,9 @@ nav.navbar
         a(href="/") 
             img.navbar__left--logo(src='img/logo.png', alt='Logo')
     .navbar__right
-        img.night__mode(data-isnight='false', src='img/moon.png', alt='Night Mode')
-        a.nav__btn(href='/signup') Signup
+        img.night__mode(data-isnight='false', src='img/moon.png', alt='Night Mode') 
+        if user 
+            a.nav__btn.nav__username(href="/user-info")= user.username 
+            a.nav__btn(style="cursor:pointer") Logout
+        else 
+            a.nav__btn(href='/signup') Signup

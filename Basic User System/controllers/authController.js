@@ -10,6 +10,30 @@ const signToken = (id) => {
   });
 };
 
+const createSendToken = (user, statusCode, res, message) => {
+  const token = signToken(user._id);
+
+  const cookieOptions = {
+    expiresIn: new Date(
+      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+    ),
+    httpOnly: true,
+  };
+
+  if (process.env.NODE_ENV === "production") cookieOptions.secure = true;
+
+  res.cookie("jwt", token, cookieOptions);
+
+  user.password = undefined;
+
+  res.status(statusCode).json({
+    status: "success",
+    message: message,
+    token,
+    document: { user },
+  });
+};
+
 exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create({
     username: req.body.username,
@@ -18,14 +42,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     confirmPassword: req.body.confirmPassword,
   });
 
-  const token = signToken(newUser._id);
-
-  res.status(201).json({
-    status: "success",
-    message: "New user created!",
-    token,
-    document: { user: newUser },
-  });
+  createSendToken(newUser, 201, res, "New user created!");
 });
 
 exports.login = catchAsync(async (req, res, next) => {
@@ -40,13 +57,7 @@ exports.login = catchAsync(async (req, res, next) => {
     return next(new AppError("Incorrect email or password!", 401));
   }
 
-  const token = signToken(user._id);
-
-  res.status(200).json({
-    status: "success",
-    message: "You are logged in now!",
-    token,
-  });
+  createSendToken(user, 200, res, "You are logged in now!");
 });
 
 exports.protect = catchAsync(async (req, res, next) => {
@@ -57,6 +68,8 @@ exports.protect = catchAsync(async (req, res, next) => {
     req.headers.authorization.startsWith("Bearer")
   ) {
     token = req.headers.authorization.split(" ")[1];
+  } else if (req.cookies.jwt) {
+    token = req.cookies.jwt;
   }
 
   if (!token)
@@ -77,6 +90,24 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   req.user = currentUser;
 
+  next();
+});
+
+// Only for rendered pages, No error
+exports.isLoggedIn = catchAsync(async (req, res, next) => {
+  if (req.cookies.jwt) {
+    const decoded = await promisify(jwt.verify)(
+      req.cookies.jwt,
+      process.env.JWT_SECRET
+    );
+
+    const currentUser = await User.findById(decoded.id);
+    if (!currentUser) return next();
+
+    // There is a logged in user
+    res.locals.user = currentUser;
+    return next();
+  }
   next();
 });
 

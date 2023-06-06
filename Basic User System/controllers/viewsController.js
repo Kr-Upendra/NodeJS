@@ -15,3 +15,9 @@ exports.loginPage = (req, res) => {
     title: "Login Page",
   });
 };
+
+exports.userInfoPage = (req, res) => {
+  res.status(200).render("userInfo", {
+    title: "User Account",
+  });
+};

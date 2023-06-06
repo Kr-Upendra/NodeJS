@@ -4,12 +4,16 @@
   "description": "A backend for users where it includes Registration login and other many cool features in it.",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "watch:js": "parcel watch ./public/script/index.js --out-dir ./public/script --out-file bundle.js"
   },
   "author": "Upendra Kumar",
   "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "axios": "^1.4.0",
     "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
     "dotenv": "^16.1.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
@@ -17,5 +21,8 @@
     "morgan": "^1.10.0",
     "pug": "^3.0.2",
     "validator": "^13.9.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
   }
 }

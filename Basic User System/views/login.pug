@@ -5,9 +5,9 @@ block content
         .main__form
             .form__name
                 h3 Login Form
-            form.form(action='')
-                input.inputbox(type='email', placeholder='Email', required='', name='email')
-                input.inputbox(type='password', placeholder='Password', required='', name='password')
+            form.form.loginForm
+                input.inputbox.loginEmail(type='email', placeholder='Email', required='', name='email')
+                input.inputbox.loginPassword(type='password', placeholder='Password', required='', name='password')
                 input.inputbox.submitbtn(type='submit', value='Login')
             .textbtn
                 span Forgot your password?

@@ -5,12 +5,33 @@ block content
         .main__form
             .form__name
                 h3 Signup Form
-            form.form(action='')
-                input.inputbox(type='text', placeholder='Username', required='', name='username')
-                input.inputbox(type='email', placeholder='Email', required='', name='email')
-                input.inputbox(type='password', placeholder='Password', required='', name='password')
-                input.inputbox(type='text', placeholder='Confirm Password', required='', name='confirmPassword')
-                input.inputbox.submitbtn(type='submit', value='Signup')
+            form.form.signupForm
+                input.inputbox.username.signupUsername(
+                    type='text',
+                    placeholder='Username',
+                    required,
+                    name='username'
+                )
+                input.inputbox.email.signupEmail(
+                    type='email', 
+                    placeholder='Email', 
+                    required, 
+                    name='email'
+                )
+                input.inputbox.password.signupPassword(
+                    type='password', placeholder='Password',
+                    required, 
+                    name='password'
+                )
+                input.inputbox.confirmPassword.signupConfirmPassword(
+                    type='text',
+                    placeholder='Confirm Password', required,
+                    name='confirmPassword'
+                )
+                input.inputbox.submitbtn(
+                    type='submit', 
+                    value='Signup'
+                )
             .textbtn
                 span Already a user?
                 span.linktext
