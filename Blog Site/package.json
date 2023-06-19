@@ -1,0 +1,26 @@
+{
+  "name": "blog-site",
+  "version": "1.0.0",
+  "description": "A personal site for blogs",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "Nodejs",
+    "ExpressJS",
+    "MongoDB",
+    "BlogSite"
+  ],
+  "author": "Upendra Kumar",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.3.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
