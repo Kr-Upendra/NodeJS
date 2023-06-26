@@ -1,3 +1,4 @@
+const slugify = require("slugify");
 const Blog = require("../dbConnection/dbConnection");
 
 exports.getAllBlog = (req, res) => {
@@ -45,8 +46,8 @@ exports.getBlog = (req, res) => {
 exports.createBlog = (req, res) => {
   const { title, postImage, description } = req.body;
   Blog.query(
-    "INSERT INTO blogs (title, postImage, postedBy, description) VALUES (?, ?, ?, ?)",
-    [title, postImage, "Admin", description],
+    "INSERT INTO blogs (title, postImage, postedBy, description, slugs) VALUES (?, ?, ?, ?, ?)",
+    [title, postImage, "Admin", description, slugify(title, "-")],
     (err, result) => {
       if (err) {
         return res.status(400).json({
@@ -123,27 +124,3 @@ exports.deleteBlog = (req, res) => {
     }
   });
 };
-
-/*
-Blog.query(`SELECT * FROM blogs WHERE ID = ${ID}`, (err, result) => {
-    if (err) {
-      return res.status(404).json({
-        status: "FAILED",
-        message: "COULDN'T FOUND BLOG WITH GIVEN ID",
-        error: err,
-      });
-    } else {
-      if (result.length < 1)
-        return res.status(404).json({
-          status: "FAILED",
-          message: "COULDN'T FOUND BLOG WITH GIVEN ID",
-        });
-
-      res.status(200).json({
-        status: "SUCCESS",
-        message: `BLOG WITH GIVEN ID: ${ID}!`,
-        docs: result,
-      });
-    }
-  });
-*/
