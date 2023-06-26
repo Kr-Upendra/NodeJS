@@ -9,7 +9,7 @@
   "keywords": [
     "Nodejs",
     "ExpressJS",
-    "MongoDB",
+    "MySQL",
     "BlogSite"
   ],
   "author": "Upendra Kumar",
@@ -17,8 +17,8 @@
   "dependencies": {
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "mongoose": "^7.3.0",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "mysql2": "^3.4.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
