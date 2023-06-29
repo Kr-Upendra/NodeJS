@@ -20,7 +20,7 @@ const passwordSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    maxlength: 80,
+    maxlength: 200,
   },
 });
 
