@@ -23,14 +23,18 @@ const passwordSchema = new mongoose.Schema({
     type: String,
     maxlength: 200,
   },
+  iv: {
+    type: String,
+  },
 });
 
 passwordSchema.pre("save", function (next) {
   const secret = process.env.HASH_PASSWORD_KEY;
-  this.password = crypto
-    .createHmac("sha256", secret)
-    .update(this.password)
-    .digest("hex");
+  const iv = Buffer.from(crypto.randomBytes(16));
+  const cipher = crypto.createCipheriv("aes-256-ctr", Buffer.from(secret), iv);
+
+  this.password = Buffer.concat([cipher.update(this.password), cipher.final()]);
+  this.iv = iv;
   next();
 });
 
