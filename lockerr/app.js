@@ -2,6 +2,7 @@ import express from "express";
 import morgan from "morgan";
 
 import passwordRoute from "./routes/passwordRoute.js";
+import userRoute from "./routes/userRoute.js";
 import AppError from "./utils/AppError.js";
 import globalErrorHandler from "./controllers/errorController.js";
 
@@ -11,6 +12,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 app.use("/api/v1/passwords/", passwordRoute);
+app.use("/api/v1/users/", userRoute);
 
 app.all("*", (req, res, next) => {
   next(
