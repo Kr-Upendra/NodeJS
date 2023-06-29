@@ -13,4 +13,6 @@ router
   .patch(passwordController.updatePassword)
   .delete(passwordController.deletePassword);
 
+router.post("/showpassword", passwordController.showPassword);
+
 export default router;

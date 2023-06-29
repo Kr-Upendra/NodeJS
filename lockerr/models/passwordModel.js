@@ -18,6 +18,7 @@ const passwordSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, "Please provide password!"],
+    select: false,
   },
   description: {
     type: String,
@@ -25,6 +26,7 @@ const passwordSchema = new mongoose.Schema({
   },
   iv: {
     type: String,
+    select: false,
   },
 });
 
@@ -32,9 +34,12 @@ passwordSchema.pre("save", function (next) {
   const secret = process.env.HASH_PASSWORD_KEY;
   const iv = Buffer.from(crypto.randomBytes(16));
   const cipher = crypto.createCipheriv("aes-256-ctr", Buffer.from(secret), iv);
+  this.password = Buffer.concat([
+    cipher.update(this.password),
+    cipher.final(),
+  ]).toString("hex");
+  this.iv = iv.toString("hex");
 
-  this.password = Buffer.concat([cipher.update(this.password), cipher.final()]);
-  this.iv = iv;
   next();
 });
 
