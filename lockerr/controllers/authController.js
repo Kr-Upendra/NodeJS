@@ -38,8 +38,6 @@ const createSendToken = (user, statusCode, res) => {
 const signup = asyncWrapper(async (req, res, next) => {
   const user = await User.create(req.body);
 
-  //   const message = `Hello ${user.username} Welcome to our family.`;
-
   const url = `${req.protocol}://${req.get("host")}/me`;
 
   await new Email(user, url).sendWelcome();

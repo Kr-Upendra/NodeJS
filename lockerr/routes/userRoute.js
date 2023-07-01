@@ -13,4 +13,11 @@ router.get(
   userController.getAllUser
 );
 
+router.get(
+  "/:id",
+  authController.protectRoute,
+  authController.restrictTo("user"),
+  userController.getUser
+);
+
 export default router;

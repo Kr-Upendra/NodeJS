@@ -35,10 +35,7 @@ class Email {
   }
 
   async sendWelcome() {
-    await this.send(
-      "Welcome to our family.",
-      "Welcome to the lockyourself family."
-    );
+    await this.send("Welome dear...", "Welcome to lockyourself world!");
   }
 }
 

@@ -14,7 +14,7 @@ const getAllPassword = asyncWrapper(async (req, res, next) => {
 });
 
 const getPassword = asyncWrapper(async (req, res, next) => {
-  const password = await Password.findById(req.params.id);
+  const password = await Password.findById(req.params.id).populate("user");
 
   if (!password)
     return next(new AppError("Password with given ID not found!", 404));
