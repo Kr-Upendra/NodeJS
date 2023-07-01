@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import User from "../models/userModel.js";
 import asyncWrapper from "../utils/asyncWrapper.js";
+import AppError from "../utils/AppError.js";
 
 const createSignToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -26,9 +27,24 @@ const signup = asyncWrapper(async (req, res, next) => {
 });
 
 const login = asyncWrapper(async (req, res, next) => {
+  const { email, password } = req.body;
+
+  if (!email || !password)
+    return next(new AppError("Please provide email and password!", 400));
+
+  const user = await User.findOne({ email }).select("+password");
+
+  if (!user || !(await user.correctPassword(password, user.password)))
+    return next(new AppError("Incorrect email or password!", 400));
+
+  const token = createSignToken(user._id);
+  user.password = undefined;
+  user.role = undefined;
+
   res.status(201).json({
     status: "success",
     message: "YOU ARE LOGGED IN SUCCESSFULLY!",
+    token,
   });
 });
 
