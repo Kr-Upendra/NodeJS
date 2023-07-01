@@ -3,6 +3,7 @@ import User from "../models/userModel.js";
 import asyncWrapper from "../utils/asyncWrapper.js";
 import AppError from "../utils/AppError.js";
 import { promisify } from "util";
+import Email from "../utils/sendMail.js";
 
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -35,8 +36,13 @@ const createSendToken = (user, statusCode, res) => {
 };
 
 const signup = asyncWrapper(async (req, res, next) => {
-  console.log(req.body);
   const user = await User.create(req.body);
+
+  //   const message = `Hello ${user.username} Welcome to our family.`;
+
+  const url = `${req.protocol}://${req.get("host")}/me`;
+
+  await new Email(user, url).sendWelcome();
 
   createSendToken(user, 201, res);
 });
